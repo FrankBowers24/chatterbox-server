@@ -1,4 +1,4 @@
-/* Import node's http module: */
+/* Import node"s http module: */
 var http = require("http");
 var handleRequest = require("./request-handler.js");
 
@@ -22,9 +22,18 @@ var ip = "127.0.0.1";
 // incoming requests.
 //
 // After creating the server, we will tell it to listen on the given port and IP. */
-var server = http.createServer(handleRequest.requestHandler);
-console.log("Listening on http://" + ip + ":" + port);
-server.listen(port, ip);
+// var server = http.createServer(handleRequest.requestHandler);
+// console.log("Listening on http://" + ip + ":" + port);
+// server.listen(port, ip);
+
+var express = require("express");
+var app = express();
+
+
+app.use("/", express.static(__dirname + "/../client"));
+console.log("directory: ", __dirname + "/../client");
+
+app.listen(port, ip);
 
 // To start this server, run:
 //
